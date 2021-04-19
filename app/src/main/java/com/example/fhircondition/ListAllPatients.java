@@ -50,14 +50,14 @@ public class ListAllPatients extends AppCompatActivity {
         showDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                anamnesisActivity.pushToServer();
+                anamnesisActivity.pushToServer();//redundant???
             }
         });
 
         register_New_Patiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                anamnesisActivity.pushToServer();
+                anamnesisActivity.pushToServer();//redundant???
                 final Handler handler = new Handler();//declaring a handler
                 handler.postDelayed(new Runnable() {
                     @Override

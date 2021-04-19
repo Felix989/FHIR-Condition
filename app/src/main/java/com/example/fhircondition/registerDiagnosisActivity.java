@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -101,9 +102,13 @@ public class registerDiagnosisActivity extends AppCompatActivity implements Adap
 
 //                    public ConditionDTO(boolean clinical_status, int verification_status, String categ, String severi, String location, boolean enco, String mn) {
 
-                ConditionDTO condition = new ConditionDTO(clinstat, verif, categor, sev, bodysi, hasenc, notes, anamnesisActivity.person_identification_number);
-                anamnesisActivity.addConditionToPerson(condition);
-                startNewIntent();
+                try{
+                    ConditionDTO condition = new ConditionDTO(clinstat, verif, categor, sev, bodysi, hasenc, notes, anamnesisActivity.person_identification_number);
+                    anamnesisActivity.addConditionToPerson(condition);
+                    startNewIntent();}
+                catch(NullPointerException e){
+                    Toast.makeText(registerDiagnosisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
+                }
 
             }
         });

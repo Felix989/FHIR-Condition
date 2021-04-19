@@ -25,4 +25,8 @@
     <string name="has_been_diagnosed">Has been diagnosed</string>
     <string name="submit">Register</string>
     <string name="seen_by_doctor">Seen by Doctor</string>
+    <string name="all_patients">All Patients</string>
+    <string name="show_data">Show Data</string>
+    <string name="register_new_patient">Register New Patient</string>
+    <string name="severity_level">Severity Level</string>
 </resources>

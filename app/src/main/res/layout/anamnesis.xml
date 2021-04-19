@@ -130,7 +130,7 @@
         android:layout_marginLeft="64dp"
         android:layout_marginBottom="36dp"
         android:text="@string/takes_medicine"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/rdGroup"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -166,7 +166,7 @@
         android:id="@+id/jumpToListed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Patients"
+        android:text="@string/all_patients"
         app:backgroundTint="#C79C27B0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

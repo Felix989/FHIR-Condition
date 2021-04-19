@@ -120,17 +120,21 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 //magasságot implementálni
                 //PersonDTO person = new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType);
                 //collection.add(new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType));
-                person = new PersonDTO();
-                person.setAge(age);
-                person.setName(name);
-                person.setWeight(weight);
-                person.setGender(gender);
-                person.setHasAllergies(allergic);
-                person.setHasMedicine(medicine);
-                person.setBloodType(bloodType);
-                person.conditions = condi;
-                person.diagnosis = diag;
-                startNewIntent();
+                try {
+                    person = new PersonDTO();
+                    person.setAge(age);
+                    person.setName(name);
+                    person.setWeight(weight);
+                    person.setGender(gender);
+                    person.setHasAllergies(allergic);
+                    person.setHasMedicine(medicine);
+                    person.setBloodType(bloodType);
+                    person.conditions = condi;
+                    person.diagnosis = diag;
+                    startNewIntent();
+                } catch (NullPointerException e) {
+                    Toast.makeText(anamnesisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

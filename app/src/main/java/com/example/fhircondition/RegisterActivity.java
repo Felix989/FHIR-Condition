@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth myAuth;
+    private NotificationHandler myNotificationHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            myNotificationHandler.send("Registered!");
                             Toast.makeText(RegisterActivity.this, "User was created!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             Intent startIntent = new Intent(getApplicationContext(), anamnesisActivity.class);
                             startActivity(startIntent);

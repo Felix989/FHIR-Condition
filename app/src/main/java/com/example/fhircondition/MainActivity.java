@@ -19,12 +19,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     public FirebaseAuth myAuth;
+    private NotificationHandler myNotificationHandler;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         myAuth = FirebaseAuth.getInstance();
+        myNotificationHandler = new NotificationHandler(MainActivity.this);
 
         EditText un = (EditText) findViewById(R.id.username);
         EditText pw = (EditText) findViewById(R.id.password);
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent loggedInIntent = new Intent(MainActivity.this, anamnesisActivity.class);
                 startActivity(loggedInIntent);
+                myNotificationHandler.send("You are not logged in!");
             }
         });
 
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                             //csaba@email.com
                             //csaba123
                             //Toast.makeText(MainActivity.this, "User was logged in!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            myNotificationHandler.send("Logged in!");
                             Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
                             myAuth.updateCurrentUser(myAuth.getCurrentUser());
                             final Handler handler = new Handler();//declaring a handler

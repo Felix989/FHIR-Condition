@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:text="Show Data"
+        android:text="@string/show_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patientListView" />
@@ -29,7 +29,7 @@
         android:id="@+id/registerNewPatiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register New Patient"
+        android:text="@string/register_new_patient"
         app:backgroundTint="#C79C27B0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
