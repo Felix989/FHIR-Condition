@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1034795234032",
+    "project_id": "anamnesis-8e117",
+    "storage_bucket": "anamnesis-8e117.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034795234032:android:df7ec64e180c922ae14835",
+        "android_client_info": {
+          "package_name": "com.example.fhircondition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034795234032-i2q5qn78jsdtv0dkuld4k8jms4ja1s5k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fhircondition",
+            "certificate_hash": "917d486aa28d59356e7db04c81607cd08c8beabf"
+          }
+        },
+        {
+          "client_id": "1034795234032-lb2n4od0poumjqbcflal96l850c2ui6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa61mOordj1mGRp3jBTTRpiGTa9UkH6V4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034795234032-lb2n4od0poumjqbcflal96l850c2ui6l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

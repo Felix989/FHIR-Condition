@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">FHIRCondition</string>
+    <string name="name">Name</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="login_with_gmail">Login With Gmail</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="e_mail">e-mail</string>
+    <string name="anamnesis_recorder">Anamnesis Recorder</string>
+    <string name="age">Age</string>
+    <string name="record">Record</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="weight">Weight</string>
+    <string name="has_allergies">Has Allergies</string>
+    <string name="takes_medicine">Takes Medicine</string>
+    <string name="medium">Medium</string>
+    <string name="high">High</string>
+    <string name="low">Low</string>
+    <string name="problem_location">Problem Location</string>
+    <string name="medical_notes">Medical Notes</string>
+    <string name="has_encountered">Has Encountered</string>
+    <string name="has_been_diagnosed">Has been diagnosed</string>
+    <string name="submit">Register</string>
+    <string name="seen_by_doctor">Seen by Doctor</string>
+</resources>
