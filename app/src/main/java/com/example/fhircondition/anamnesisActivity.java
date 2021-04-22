@@ -106,6 +106,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
             @Override
             public void onClick(View v) {
 
+                person = new PersonDTO();
                 try {
                     String name = nameField.getText().toString();
                     person.setName(name);
@@ -160,7 +161,6 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 //PersonDTO person = new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType);
                 //collection.add(new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType));
 
-                person = new PersonDTO();
                 person.setGender(gender);
                 person.setHasAllergies(allergic);
                 person.setHasMedicine(medicine);
