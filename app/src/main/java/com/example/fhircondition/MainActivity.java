@@ -7,11 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,8 +42,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent loggedInIntent = new Intent(MainActivity.this, anamnesisActivity.class);
-                startActivity(loggedInIntent);
                 myNotificationHandler.send("You are not logged in!");
+                YoYo.with(Techniques.Flash).duration(700).repeat(1).playOn(sb);
+                final Handler handler = new Handler();//declaring a handler
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(loggedInIntent);
+                    }
+                }, 1700);
             }
         });
 
@@ -49,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 String getun = un.getText().toString();
                 String getpw = pw.getText().toString();
 
+                try{
                 myAuth.signInWithEmailAndPassword(getun, getpw).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -59,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
                             myNotificationHandler.send("Logged in!");
                             Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
                             myAuth.updateCurrentUser(myAuth.getCurrentUser());
+
+                            YoYo.with(Techniques.RubberBand).duration(700).repeat(1).playOn(ln);
+//                            Animation anim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+
                             final Handler handler = new Handler();//declaring a handler
                             handler.postDelayed(new Runnable() {
                                 @Override
@@ -72,7 +88,11 @@ public class MainActivity extends AppCompatActivity {
 //                            myAuth.signOut();
                         }
                     }
-                });
+                });}
+                catch (Exception e){
+                    Toast.makeText(MainActivity.this, "Couldn't log in!", Toast.LENGTH_LONG).show();
+                    YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(ln);
+                }
 
 
             }

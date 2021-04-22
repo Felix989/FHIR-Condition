@@ -16,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +42,8 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
     private CollectionReference collection;
     public static PersonDTO person;// = new PersonDTO();
     public static String person_identification_number = "";
+
+    private boolean canGoThrough = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,14 +105,49 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
         recordField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = nameField.getText().toString();
-                int age = Integer.parseInt(String.valueOf(ageField.getText()));
-                int weight = Integer.parseInt(weightField.getText().toString());
+
+                try {
+                    String name = nameField.getText().toString();
+                    person.setName(name);
+                    canGoThrough = true;
+                } catch (Exception e) {
+                    canGoThrough = false;
+                    Toast.makeText(anamnesisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
+                    YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(recordField);
+                }
+
+                try {
+                    if(canGoThrough == false){
+                    } else {
+                        canGoThrough = true;
+                    }
+                    int age = Integer.parseInt(String.valueOf(ageField.getText()));
+                    person.setAge(age);
+                } catch (Exception e) {
+                    canGoThrough = false;
+                    Toast.makeText(anamnesisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
+                    YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(recordField);
+                }
+
+                try {
+                    if(canGoThrough == false){
+                    } else {
+                        canGoThrough = true;
+                    }
+                    int weight = Integer.parseInt(weightField.getText().toString());
+                    person.setWeight(weight);
+                } catch (Exception e) {
+                    canGoThrough = false;
+                    Toast.makeText(anamnesisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
+                    YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(recordField);
+                }
+
                 boolean allergic = allergiesField.isChecked();
                 boolean medicine = medicineField.isChecked();
                 boolean gender = false; // 0 male | 1 female
                 List<ConditionDTO> condi = new ArrayList<>();
                 List<DiagnosisDTO> diag = new ArrayList<>();
+
 
                 if (maleField.isChecked()) {
                     gender = false;
@@ -116,25 +155,19 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                     gender = true;
                 }
                 String bloodType = spinner.getSelectedItem().toString();
-//                System.out.println(name + " " +  age+ " " +  weight+ " " +  allergic+ " " +  medicine+ " " +  gender + " " + bloodType);
+                //                System.out.println(name + " " +  age+ " " +  weight+ " " +  allergic+ " " +  medicine+ " " +  gender + " " + bloodType);
                 //magasságot implementálni
                 //PersonDTO person = new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType);
                 //collection.add(new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType));
-                try {
-                    person = new PersonDTO();
-                    person.setAge(age);
-                    person.setName(name);
-                    person.setWeight(weight);
-                    person.setGender(gender);
-                    person.setHasAllergies(allergic);
-                    person.setHasMedicine(medicine);
-                    person.setBloodType(bloodType);
-                    person.conditions = condi;
-                    person.diagnosis = diag;
-                    startNewIntent();
-                } catch (NullPointerException e) {
-                    Toast.makeText(anamnesisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
-                }
+
+                person = new PersonDTO();
+                person.setGender(gender);
+                person.setHasAllergies(allergic);
+                person.setHasMedicine(medicine);
+                person.setBloodType(bloodType);
+                person.conditions = condi;
+                person.diagnosis = diag;
+                startNewIntent();
             }
         });
 
@@ -176,7 +209,9 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
 
     public void startNewIntent() {
         Intent startIntent = new Intent(getApplicationContext(), registerDiagnosisActivity.class);
-        startActivity(startIntent);
+        if(canGoThrough){
+            startActivity(startIntent);
+        }
     }
 
     public static void pushToServer() {
