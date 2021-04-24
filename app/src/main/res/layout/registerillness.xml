@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#403f3f">
 
     <EditText
         android:id="@+id/covidTestTypeField"
@@ -14,6 +14,8 @@
         android:ems="10"
         android:hint="Covid Test Type"
         android:inputType="textPersonName"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +23,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup2"
-        android:layout_width="403dp"
-        android:layout_height="104dp"
+        android:layout_width="246dp"
+        android:layout_height="102dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +34,17 @@
             android:id="@+id/isChronicButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="is Chronic" />
+            android:text="is Chronic"
+            android:textColor="#D3D3D3"
+            android:textColorHint="#D3D3D3" />
 
         <RadioButton
             android:id="@+id/isAcuteisButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="is Acute" />
+            android:text="is Acute"
+            android:textColor="#D3D3D3"
+            android:textColorHint="#D3D3D3" />
     </RadioGroup>
 
     <Switch
@@ -47,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Needs Hospitalization"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toStartOf="@+id/bloodSwitch"
         app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Has Covid"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toStartOf="@+id/infectiousSwitch"
         app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Therapy Needed"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toStartOf="@+id/controlSwitch"
         app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +91,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="Is Infectious"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surgerySwitch" />
 
@@ -93,6 +103,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="Control Needed"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/urineSwitch" />
 
@@ -102,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Rehabilitation Needed"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,6 +127,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="Surgery Needed"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/controlSwitch" />
 
@@ -124,6 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Needs Drug"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toStartOf="@+id/urineSwitch"
         app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,6 +151,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="Needs Urine Taken"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bloodSwitch" />
 
@@ -148,6 +163,7 @@
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:text="Needs Blood Taken"
+        android:textColor="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
 
@@ -159,6 +175,8 @@
         android:ems="10"
         android:hint="Illnes Name"
         android:inputType="textPersonName"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,6 +187,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
+        android:textColor="#D3D3D3"
+        app:backgroundTint="#427A5B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

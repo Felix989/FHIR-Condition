@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#403f3f">
 
     <Switch
         android:id="@+id/clinicalStatusToggle"
@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="@string/seen_by_doctor"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/has_been_diagnosed"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clinicalStatusToggle" />
@@ -50,6 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/severity_level"
+            android:textColor="#D3D3D3"
+            android:textColorHint="#D3D3D3"
             android:textSize="18dp" />
 
         <RadioButton
@@ -57,21 +63,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onSeverityButtonClicked"
-            android:text="@string/low" />
+            android:text="@string/low"
+            android:textColor="#D3D3D3"
+            android:textColorHint="#D3D3D3" />
 
         <RadioButton
             android:id="@+id/severityMediumButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onSeverityButtonClicked"
-            android:text="@string/medium" />
+            android:text="@string/medium"
+            android:textColor="#D3D3D3"
+            android:textColorHint="#D3D3D3" />
 
         <RadioButton
             android:id="@+id/severityHighButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onSeverityButtonClicked"
-            android:text="@string/high" />
+            android:text="@string/high"
+            android:textColor="#D3D3D3"
+            android:textColorHint="#D3D3D3" />
 
     </RadioGroup>
 
@@ -84,6 +96,8 @@
         android:ems="10"
         android:hint="@string/problem_location"
         android:inputType="textPersonName"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +112,8 @@
         android:ems="10"
         android:hint="@string/medical_notes"
         android:inputType="textPersonName"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +125,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/has_encountered"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medicalNotesField" />
@@ -118,6 +136,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register"
+        android:textColor="#D3D3D3"
+        app:backgroundTint="#427A5B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
