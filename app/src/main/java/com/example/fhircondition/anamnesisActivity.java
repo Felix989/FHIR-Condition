@@ -54,6 +54,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
         TextView nameField = (TextView) findViewById(R.id.nameField);
         TextView ageField = (TextView) findViewById(R.id.ageField);
         TextView weightField = (TextView) findViewById(R.id.weightField);
+        TextView heightField = (TextView) findViewById(R.id.heightField);
         RadioButton maleField = (RadioButton) findViewById(R.id.maleButton);
         RadioButton femaleField = (RadioButton) findViewById(R.id.femaleButton);
         Switch allergiesField = (Switch) findViewById(R.id.allergiesSwitch);
@@ -83,11 +84,11 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
         arrayList.add("O+");
         arrayList.add("O-");
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);//redundáns???
 
         spinner = findViewById(R.id.bloodTypeSpinner);
         spinner.setOnItemSelectedListener(this);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);//redundáns???
         spinner.setAdapter(arrayAdapter);
 
 
@@ -113,7 +114,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                     canGoThrough = true;
                 } catch (Exception e) {
                     canGoThrough = false;
-                    Toast.makeText(anamnesisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
+                    NotificationManager.inputIsNull(anamnesisActivity.this);
                     YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(recordField);
                 }
 
@@ -126,7 +127,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                     person.setAge(age);
                 } catch (Exception e) {
                     canGoThrough = false;
-                    Toast.makeText(anamnesisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
+                    NotificationManager.inputIsNull(anamnesisActivity.this);
                     YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(recordField);
                 }
 
@@ -139,7 +140,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                     person.setWeight(weight);
                 } catch (Exception e) {
                     canGoThrough = false;
-                    Toast.makeText(anamnesisActivity.this, "Every input has to be filled!", Toast.LENGTH_LONG).show();
+                    NotificationManager.inputIsNull(anamnesisActivity.this);
                     YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(recordField);
                 }
 
@@ -161,6 +162,8 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 //PersonDTO person = new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType);
                 //collection.add(new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType));
 
+                int height = Integer.parseInt(heightField.getText().toString());
+                person.setHeight(height);
                 person.setGender(gender);
                 person.setHasAllergies(allergic);
                 person.setHasMedicine(medicine);

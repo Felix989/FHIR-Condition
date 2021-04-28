@@ -41,11 +41,11 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             myNotificationHandler.send("Registered!");
-                            Toast.makeText(RegisterActivity.this, "User was created!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            NotificationManager.userRegistered(RegisterActivity.this);
                             Intent startIntent = new Intent(getApplicationContext(), anamnesisActivity.class);
                             startActivity(startIntent);
                         } else {
-                            Toast.makeText(RegisterActivity.this, "User cannot be created!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            NotificationManager.registerError(RegisterActivity.this);
                         }
                     }
                 });

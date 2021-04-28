@@ -60,37 +60,37 @@ public class MainActivity extends AppCompatActivity {
                 String getun = un.getText().toString();
                 String getpw = pw.getText().toString();
 
-                try{
-                myAuth.signInWithEmailAndPassword(getun, getpw).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            //csaba@email.com
-                            //csaba123
-                            //Toast.makeText(MainActivity.this, "User was logged in!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            myNotificationHandler.send("Logged in!");
-                            Toast.makeText(MainActivity.this, "Logged in successfully!", Toast.LENGTH_LONG).show();
-                            myAuth.updateCurrentUser(myAuth.getCurrentUser());
+                try {
+                    myAuth.signInWithEmailAndPassword(getun, getpw).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                //csaba@email.com
+                                //csaba123
+                                //Toast.makeText(MainActivity.this, "User was logged in!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                myNotificationHandler.send("Logged in!");
+                                NotificationManager.succesfullLogin(MainActivity.this);
+                                myAuth.updateCurrentUser(myAuth.getCurrentUser());
 
-                            YoYo.with(Techniques.RubberBand).duration(700).repeat(1).playOn(ln);
+                                YoYo.with(Techniques.RubberBand).duration(700).repeat(1).playOn(ln);
 //                            Animation anim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
 
-                            final Handler handler = new Handler();//declaring a handler
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    startNewIntent();
-                                }
-                            }, 1700);
-                        } else {
+                                final Handler handler = new Handler();//declaring a handler
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        startNewIntent();
+                                    }
+                                }, 1700);
+                            } else {
 //                            Toast.makeText(MainActivity.this, "User was not logged in!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            Toast.makeText(MainActivity.this, "Couldn't log in!", Toast.LENGTH_LONG).show();
+                                NotificationManager.cantLogIn(MainActivity.this);
 //                            myAuth.signOut();
+                            }
                         }
-                    }
-                });}
-                catch (Exception e){
-                    Toast.makeText(MainActivity.this, "Couldn't log in!", Toast.LENGTH_LONG).show();
+                    });
+                } catch (Exception e) {
+                    NotificationManager.cantLogIn(MainActivity.this);
                     YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(ln);
                 }
 
@@ -108,13 +108,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
     }//oncreate vége
 
-    private void startNewIntent(){
+    private void startNewIntent() {
         Intent loggedInIntent = new Intent(MainActivity.this, anamnesisActivity.class);
-        Toast.makeText(MainActivity.this, "Logged in!", Toast.LENGTH_LONG).show();
+        NotificationManager.succesfullLogin(MainActivity.this);
         startActivity(loggedInIntent);
     }
 }

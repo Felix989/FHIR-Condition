@@ -28,22 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/nameField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:textColor="#D3D3D3"
-        android:textColorHint="#D3D3D3"
-        app:layout_constraintBottom_toTopOf="@+id/ageField"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -56,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.465" />
+        app:layout_constraintVertical_bias="0.093" />
 
     <TextView
         android:id="@+id/textView2"
@@ -148,10 +132,42 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:id="@+id/weightField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/weight"
+        android:inputType="number"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/nameField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
+        app:layout_constraintBottom_toTopOf="@+id/heightField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
         android:id="@+id/ageField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/age"
@@ -164,17 +180,17 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/weightField"
+        android:id="@+id/heightField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/weight"
-        android:inputType="number"
+        android:hint="Height"
+        android:inputType="textPersonName"
         android:textColor="#D3D3D3"
         android:textColorHint="#D3D3D3"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/ageField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent" />

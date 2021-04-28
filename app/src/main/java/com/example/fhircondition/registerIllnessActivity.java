@@ -56,6 +56,7 @@ public class registerIllnessActivity extends AppCompatActivity {
                 anamnesisActivity.addDiagnosisToPerson(diag);
                 System.out.println(diag);
 //                anamnesisActivity.pushToServer();
+                NotificationManager.dataTemporalSave(registerIllnessActivity.this);
                 startNewIntent();
             }
 

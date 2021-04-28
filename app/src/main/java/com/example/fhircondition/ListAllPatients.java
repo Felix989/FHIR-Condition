@@ -39,6 +39,7 @@ public class ListAllPatients extends AppCompatActivity {
     private ArrayAdapter<PersonDTO> personsAdapter;
     private CollectionReference collection;
     private static FirebaseFirestore fireStore;
+    static boolean hasBeenPressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +63,22 @@ public class ListAllPatients extends AppCompatActivity {
         showDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                anamnesisActivity.pushToServer();//redundant???
+                if (!hasBeenPressed) {
+                    NotificationManager.dataPermanentSave(ListAllPatients.this);
+                    anamnesisActivity.pushToServer();
+                }
+                hasBeenPressed = true;
             }
         });
 
         register_New_Patiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                anamnesisActivity.pushToServer();//redundant???
+                if (!hasBeenPressed) {
+                    NotificationManager.dataPermanentSave(ListAllPatients.this);
+                    anamnesisActivity.pushToServer();
+                }
+                hasBeenPressed = false;
                 final Handler handler = new Handler();//declaring a handler
                 handler.postDelayed(new Runnable() {
                     @Override

@@ -31,12 +31,16 @@ public class registerDiagnosisActivity extends AppCompatActivity implements Adap
     //    private static FirebaseFirestore fireStore;
 //    private CollectionReference collection;
     Spinner spinner;
+    private NotificationHandler myNotificationHandler;
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registercondition);
+        myNotificationHandler = new NotificationHandler(registerDiagnosisActivity.this);
+
+        myNotificationHandler.send("bmi");
 
         Switch clinical_StatusToggle = (Switch) findViewById(R.id.clinicalStatusToggle);
         Switch verification_StatusSwitch = (Switch) findViewById(R.id.verificationStatusSwitch);
@@ -103,6 +107,7 @@ public class registerDiagnosisActivity extends AppCompatActivity implements Adap
 
                 ConditionDTO condition = new ConditionDTO(clinstat, verif, categor, sev, bodysi, hasenc, notes, anamnesisActivity.person_identification_number);
                 anamnesisActivity.addConditionToPerson(condition);
+                NotificationManager.dataTemporalSave(registerDiagnosisActivity.this);
                 startNewIntent();
 
             }
