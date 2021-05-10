@@ -1,4 +1,10 @@
 package com.example.fhircondition;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class DiagnosisDTO {
     String ConditionName;
@@ -17,6 +23,7 @@ public class DiagnosisDTO {
     boolean hasCovid;
     String CovidTestType;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public DiagnosisDTO(String conditionName,
                         boolean isAcute,
                         boolean isChornic,
@@ -34,7 +41,11 @@ public class DiagnosisDTO {
         ConditionName = conditionName;
         this.isAcute = isAcute;
         this.isChornic = isChornic;
-//        DiagnosisTime = diagnosisTime; automatikus legyen
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        DiagnosisTime = dtf.format(now);
+
         DrugNeeded = drugNeeded;
         NeedsHospitalization = needsHospitalization;
         BloodTaken = bloodTaken;

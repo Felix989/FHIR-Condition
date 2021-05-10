@@ -21,6 +21,7 @@
         <activity android:name = ".registerDiagnosisActivity"></activity>
         <activity android:name = ".registerIllnessActivity"></activity>
         <activity android:name = ".ListAllPatients"></activity>
+        <activity android:name = ".deletePatient"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,15 @@ public class PersonDTO {
     int height;
     int weight;
     boolean gender; // 0 male | 1 female
+    boolean isDeleted;
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 
     public int getAge() {
         return age;
@@ -117,5 +126,6 @@ public class PersonDTO {
         hasAllergies = false;
         hasMedicine = false;
         bloodType = "";
+        isDeleted = true;
     }
 }

@@ -40,7 +40,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
     private static final String LOG_TAG = anamnesisActivity.class.getName();
     private static FirebaseFirestore fireStore;
     private CollectionReference collection;
-    public static PersonDTO person;// = new PersonDTO();
+    public static PersonDTO person = new PersonDTO();
     public static String person_identification_number = "";
 
     private boolean canGoThrough = true;
@@ -61,6 +61,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
         Switch medicineField = (Switch) findViewById(R.id.medicineSwitch);
         Button recordField = (Button) findViewById(R.id.recordButton);
         Button all_patients = (Button) findViewById(R.id.jumpToListed);
+        Button deletePatient = (Button) findViewById(R.id.deletePatient);
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -103,11 +104,18 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
             }
         });
 
+        deletePatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePatientPageLoader();
+            }
+        });
+
         recordField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                person = new PersonDTO();
+                //person = new PersonDTO();
                 try {
                     String name = nameField.getText().toString();
                     person.setName(name);
@@ -170,6 +178,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 person.setBloodType(bloodType);
                 person.conditions = condi;
                 person.diagnosis = diag;
+                person.isDeleted = false;
                 startNewIntent();
             }
         });
@@ -216,6 +225,12 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
             startActivity(startIntent);
         }
     }
+
+    public void deletePatientPageLoader(){
+        Intent startIntent = new Intent(getApplicationContext(), deletePatient.class);
+        startActivity(startIntent);
+    }
+
 
     public static void pushToServer() {
         int r = new Random().nextInt(99999999); // [0...99999999]

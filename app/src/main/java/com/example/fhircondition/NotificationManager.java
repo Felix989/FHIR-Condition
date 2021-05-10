@@ -35,6 +35,10 @@ public class NotificationManager {
         Toast.makeText(cont, "User couldn't be created!", Toast.LENGTH_LONG).show();
     }
 
+    public static void deletePatient(Context cont, String name) {
+        Toast.makeText(cont, "Patient '" + name + "' was deleted!", Toast.LENGTH_LONG).show();
+    }
+
 //    public static void bmiAlert(Context cont) {
 //        int bmi = (person.weight / (person.height * person.height));
 //        String msg = "Person's BMI.: " + bmi;

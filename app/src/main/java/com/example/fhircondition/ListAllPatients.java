@@ -63,7 +63,7 @@ public class ListAllPatients extends AppCompatActivity {
         showDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!hasBeenPressed) {
+                if (!hasBeenPressed && !anamnesisActivity.person.isDeleted) {
                     NotificationManager.dataPermanentSave(ListAllPatients.this);
                     anamnesisActivity.pushToServer();
                 }
@@ -74,7 +74,7 @@ public class ListAllPatients extends AppCompatActivity {
         register_New_Patiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!hasBeenPressed) {
+                if (!hasBeenPressed && !anamnesisActivity.person.isDeleted) {
                     NotificationManager.dataPermanentSave(ListAllPatients.this);
                     anamnesisActivity.pushToServer();
                 }

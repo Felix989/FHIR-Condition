@@ -10,14 +10,14 @@
         android:id="@+id/recordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/record"
         android:textColor="#D3D3D3"
         app:backgroundTint="#427A5B"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/deletePatient" />
 
     <Spinner
         android:id="@+id/bloodTypeSpinner"
@@ -186,8 +186,8 @@
         android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Height"
-        android:inputType="textPersonName"
+        android:hint="@string/height"
+        android:inputType="number"
         android:textColor="#D3D3D3"
         android:textColorHint="#D3D3D3"
         app:layout_constraintBottom_toTopOf="@+id/ageField"
@@ -204,8 +204,23 @@
         app:backgroundTint="#fcf5b8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toEndOf="@+id/recordButton"
-        app:layout_constraintTop_toBottomOf="@+id/bloodTypeSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/bloodTypeSpinner"
+        app:layout_constraintVertical_bias="0.636" />
+
+    <Button
+        android:id="@+id/deletePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/erase"
+        android:textColor="#D3D3D3"
+        app:backgroundTint="#E38471"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bloodTypeSpinner"
+        app:layout_constraintVertical_bias="0.636" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

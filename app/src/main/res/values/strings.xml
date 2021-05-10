@@ -30,4 +30,10 @@
     <string name="register_new_patient">Register New Patient</string>
     <string name="severity_level">Severity Level</string>
     <string name="skip">Skip</string>
+    <string name="height">Height</string>
+    <string name="back">Back</string>
+    <string name="delete">Delete</string>
+    <string name="delete_patient_by_name">Delete patient by name</string>
+    <string name="remove">remove</string>
+    <string name="erase">erase</string>
 </resources>
