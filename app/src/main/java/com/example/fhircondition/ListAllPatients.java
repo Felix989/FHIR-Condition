@@ -40,6 +40,7 @@ public class ListAllPatients extends AppCompatActivity {
     private CollectionReference collection;
     private static FirebaseFirestore fireStore;
     static boolean hasBeenPressed = false;
+    public static FHIRCondition condi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,8 @@ public class ListAllPatients extends AppCompatActivity {
             public void onClick(View v) {
                 if (!hasBeenPressed && !anamnesisActivity.person.isDeleted) {
                     NotificationManager.dataPermanentSave(ListAllPatients.this);
+                    condi = new FHIRCondition();
+                    condi.printEveryProperty();
                     anamnesisActivity.pushToServer();
                 }
                 hasBeenPressed = true;
@@ -76,6 +79,8 @@ public class ListAllPatients extends AppCompatActivity {
             public void onClick(View v) {
                 if (!hasBeenPressed && !anamnesisActivity.person.isDeleted) {
                     NotificationManager.dataPermanentSave(ListAllPatients.this);
+                    condi = new FHIRCondition();
+                    condi.printEveryProperty();
                     anamnesisActivity.pushToServer();
                 }
                 hasBeenPressed = false;

@@ -7,10 +7,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 public class DiagnosisDTO {
-    String ConditionName;
+    String ConditionName;//abatement-string
     boolean isAcute; //nem régóta
     boolean isChornic; //régóta beteg
-    String DiagnosisTime;
+    String DiagnosisTime;//abatement-date
     boolean DrugNeeded;
     boolean NeedsHospitalization;
     boolean BloodTaken; //ásványi anyagok, típus, vesefunkciók, pajzsmirigy funkció, tumor, gyulladás, hormonok
@@ -22,6 +22,8 @@ public class DiagnosisDTO {
     boolean isInfectious;
     boolean hasCovid;
     String CovidTestType;
+    //RECORDER -> AZ ORVOS ID-je, ha be van jelentkezve, firebaseból.//asserter
+    
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public DiagnosisDTO(String conditionName,

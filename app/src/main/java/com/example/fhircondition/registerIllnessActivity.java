@@ -2,6 +2,7 @@ package com.example.fhircondition;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,11 +10,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ComponentActivity;
 
 public class registerIllnessActivity extends AppCompatActivity {
-
+    public static DiagnosisDTO diag;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,10 @@ public class registerIllnessActivity extends AppCompatActivity {
         Button next_Button = (Button) findViewById(R.id.nextButton);
 
         next_Button.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                DiagnosisDTO diag = new DiagnosisDTO(Illnes_Name_Field.getText().toString(),
+                diag = new DiagnosisDTO(Illnes_Name_Field.getText().toString(),
                         is_Acuteis_Button.isChecked(),
                         is_Chronic_Button.isChecked(),
                         drug_Switch.isChecked(),

@@ -6,8 +6,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonDTO {
-    int age;
+public class PersonDTO {//patient | subject
+    int age; //onset-age
     String name;
     int height;
     int weight;

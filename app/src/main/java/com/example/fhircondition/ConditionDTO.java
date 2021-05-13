@@ -5,10 +5,19 @@ public class ConditionDTO {
     boolean verificationStatus;//has been diagnosed (toggle)
     String category;//medical condition category (spinner)
     String severity;//severity level low, medium, high (radio button)
-    String bodySite;//location of the problem or the source (text)
+    String bodySite;//location of the problem or the source (text) body-site
     String medicalNotes;//doctors suggestion (text)
     boolean encounter;//has had it or not (toggle)
     String PersonID;
+    //code for the conidtion
+    //evidence [{code}, {deatil}]
+    //evidence detail
+    //code for the status
+    //abament-age
+    //onset-date
+    //onset-info
+    
+
 
     public boolean isClinicalStatus() {
         return clinicalStatus;

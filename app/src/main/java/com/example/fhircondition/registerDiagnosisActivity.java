@@ -32,6 +32,7 @@ public class registerDiagnosisActivity extends AppCompatActivity implements Adap
 //    private CollectionReference collection;
     Spinner spinner;
     private NotificationHandler myNotificationHandler;
+    public static ConditionDTO condition;
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     @Override
@@ -105,7 +106,7 @@ public class registerDiagnosisActivity extends AppCompatActivity implements Adap
 
 //                    public ConditionDTO(boolean clinical_status, int verification_status, String categ, String severi, String location, boolean enco, String mn) {
 
-                ConditionDTO condition = new ConditionDTO(clinstat, verif, categor, sev, bodysi, hasenc, notes, anamnesisActivity.person_identification_number);
+                condition = new ConditionDTO(clinstat, verif, categor, sev, bodysi, hasenc, notes, anamnesisActivity.person_identification_number);
                 anamnesisActivity.addConditionToPerson(condition);
                 NotificationManager.dataTemporalSave(registerDiagnosisActivity.this);
                 startNewIntent();

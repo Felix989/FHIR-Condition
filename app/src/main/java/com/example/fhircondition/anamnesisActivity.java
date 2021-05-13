@@ -235,7 +235,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
     public static void pushToServer() {
         int r = new Random().nextInt(99999999); // [0...99999999]
         person_identification_number = String.valueOf(r);
-        fireStore.collection("PersonDTO").document(String.valueOf(r)).set(person)
+        fireStore.collection("FHIRCondition").document(String.valueOf(r)).set(ListAllPatients.condi)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
