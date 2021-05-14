@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     public FirebaseAuth myAuth;
     private NotificationHandler myNotificationHandler;
+    public static boolean skipped = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent loggedInIntent = new Intent(MainActivity.this, anamnesisActivity.class);
                 myNotificationHandler.send("You are not logged in!");
+                skipped = true;
+//                NotificationHandler.unauthorized();
                 YoYo.with(Techniques.Flash).duration(700).repeat(1).playOn(sb);
                 final Handler handler = new Handler();//declaring a handler
                 handler.postDelayed(new Runnable() {
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                 myNotificationHandler.send("Logged in!");
                                 NotificationManager.succesfullLogin(MainActivity.this);
                                 myAuth.updateCurrentUser(myAuth.getCurrentUser());
-
+                                skipped = false;
                                 YoYo.with(Techniques.RubberBand).duration(700).repeat(1).playOn(ln);
 //                            Animation anim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
 

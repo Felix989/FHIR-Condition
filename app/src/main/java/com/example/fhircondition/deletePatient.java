@@ -22,7 +22,15 @@ public class deletePatient extends AppCompatActivity {
         TextView deletePatientByNameField = (TextView) findViewById(R.id.deletePatientByNameField);
         Button deletePatientButton = (Button) findViewById(R.id.deletePatientButton);
         Button backPatientButton = (Button) findViewById(R.id.backPatientButton);
+        Button logOutButton = (Button) findViewById(R.id.logOutButton);
 
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(startIntent);
+            }
+        });
 
         deletePatientButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +50,7 @@ public class deletePatient extends AppCompatActivity {
             }
         });
     }
+
 
     public void deleteByName(String name){
         DatabaseReference dbrf = FirebaseDatabase.getInstance().getReference("PersonDTO").child(name);

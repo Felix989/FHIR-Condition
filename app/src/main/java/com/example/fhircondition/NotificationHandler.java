@@ -71,5 +71,16 @@ public class NotificationHandler {
 
     }
 
+//
+//    public static void unauthorized(Context cont, int noti) {
+//        String msg = "If you are not logged in you won't be able to push data to the server!";
+//            NotificationCompat.Builder builder = new NotificationCompat.Builder(cont, CHANNELID)
+//                    .setContentTitle("FHIR - Condition")
+//                    .setContentText(msg)
+//                    .setSmallIcon(R.drawable.ic_visibility_black_24dp);
+//
+//            this.myManager.notify(noti, builder.build());
+//    }
+//
 
 }

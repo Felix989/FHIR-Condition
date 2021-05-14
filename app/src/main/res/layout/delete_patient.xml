@@ -6,21 +6,16 @@
     android:layout_height="match_parent"
     android:background="#403f3f">
 
-    <EditText
-        android:id="@+id/deletePatientByNameField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:textColor="#D3D3D3"
-        android:textColorHint="#D3D3D3"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="154dp"
+        android:layout_height="204dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/healthcare" />
 
     <Button
         android:id="@+id/backPatientButton"
@@ -32,10 +27,10 @@
         app:backgroundTint="#fcf5b8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/deletePatientButton"
-        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deletePatientByNameField"
-        app:layout_constraintVertical_bias="0.952" />
+        app:layout_constraintVertical_bias="0.514" />
 
     <Button
         android:id="@+id/deletePatientButton"
@@ -50,13 +45,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deletePatientByNameField"
-        app:layout_constraintVertical_bias="0.952" />
+        app:layout_constraintVertical_bias="0.514" />
+
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:textColor="#403f3f"
+        app:backgroundTint="#E38471"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deletePatientButton"
+        app:layout_constraintVertical_bias="0.652" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="343dp"
         android:layout_height="67dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="152dp"
         android:text="@string/delete_patient_by_name"
         android:textColor="#D3D3D3"
         android:textColorHint="#D3D3D3"
@@ -64,4 +73,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/deletePatientByNameField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

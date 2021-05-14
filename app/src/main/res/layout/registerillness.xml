@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     android:background="#403f3f">
 
-    <EditText
-        android:id="@+id/covidTestTypeField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:ems="10"
-        android:hint="Covid Test Type"
-        android:inputType="textPersonName"
-        android:textColor="#D3D3D3"
-        android:textColorHint="#D3D3D3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/covidSwitch" />
-
     <RadioGroup
         android:id="@+id/radioGroup2"
         android:layout_width="246dp"
@@ -180,7 +165,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/nextButton"
@@ -191,7 +177,37 @@
         app:backgroundTint="#427A5B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/covidTestTypeField" />
+        app:layout_constraintTop_toBottomOf="@+id/covidTestTypeField"
+        app:layout_constraintVertical_bias="0.651" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="122dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toEndOf="@+id/covidTestTypeField"
+        app:layout_constraintTop_toBottomOf="@+id/infectiousSwitch"
+        app:layout_constraintVertical_bias="0.767"
+        app:srcCompat="@drawable/injection" />
+
+    <EditText
+        android:id="@+id/covidTestTypeField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="136dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="Covid Test Type"
+        android:inputType="textPersonName"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/covidSwitch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

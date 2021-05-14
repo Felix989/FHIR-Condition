@@ -119,7 +119,11 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 try {
                     String name = nameField.getText().toString();
                     person.setName(name);
-                    canGoThrough = true;
+                    if(name.equals("") || name.equals(null)){
+                        canGoThrough = false;
+                    } else {
+                        canGoThrough = true;
+                    }
                 } catch (Exception e) {
                     canGoThrough = false;
                     NotificationManager.inputIsNull(anamnesisActivity.this);
@@ -152,6 +156,20 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                     YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(recordField);
                 }
 
+
+                try {
+                    if(canGoThrough == false){
+                    } else {
+                        canGoThrough = true;
+                    }
+                    int height = Integer.parseInt(heightField.getText().toString());
+                    person.setHeight(height);
+                } catch (Exception e) {
+                    canGoThrough = false;
+                    NotificationManager.inputIsNull(anamnesisActivity.this);
+                    YoYo.with(Techniques.Shake).duration(700).repeat(1).playOn(recordField);
+                }
+
                 boolean allergic = allergiesField.isChecked();
                 boolean medicine = medicineField.isChecked();
                 boolean gender = false; // 0 male | 1 female
@@ -170,8 +188,6 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 //PersonDTO person = new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType);
                 //collection.add(new PersonDTO(age, name, 175, weight, gender, allergic, medicine, bloodType));
 
-                int height = Integer.parseInt(heightField.getText().toString());
-                person.setHeight(height);
                 person.setGender(gender);
                 person.setHasAllergies(allergic);
                 person.setHasMedicine(medicine);
@@ -233,15 +249,18 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
 
 
     public static void pushToServer() {
-        int r = new Random().nextInt(99999999); // [0...99999999]
-        person_identification_number = String.valueOf(r);
-        fireStore.collection("FHIRCondition").document(String.valueOf(r)).set(ListAllPatients.condi)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            //Toast.makeText(anamnesisActivity.this, "Data has been pushed to the database!", Toast.LENGTH_LONG).show();
-                            System.out.println("Data has been pushed to the database!");
+        FirebaseUser us;
+        us = FirebaseAuth.getInstance().getCurrentUser();
+        if(MainActivity.skipped == false){
+            int r = new Random().nextInt(99999999); // [0...99999999]
+            person_identification_number = String.valueOf(r);
+            fireStore.collection("FHIRCondition").document(String.valueOf(r)).set(ListAllPatients.condi)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                //Toast.makeText(anamnesisActivity.this, "Data has been pushed to the database!", Toast.LENGTH_LONG).show();
+                                System.out.println("Data has been pushed to the database!");
 //                                    rules_version = '2';
 //                                    service cloud.firestore {
 //                                        match /databases/{database}/documents {
@@ -250,9 +269,9 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
 //                                            }
 //                                        }
 //                                    }
-                        } else {
-                            System.out.println("Data couldn't be pushed to the database!");
-                            //Toast.makeText(anamnesisActivity.this, "Data couldn't be pushed to the database!", Toast.LENGTH_LONG).show();
+                            } else {
+                                System.out.println("Data couldn't be pushed to the database!");
+                                //Toast.makeText(anamnesisActivity.this, "Data couldn't be pushed to the database!", Toast.LENGTH_LONG).show();
 //                                    rules_version = '2';
 //                                    service cloud.firestore {
 //                                        match /databases/{database}/documents {
@@ -261,8 +280,16 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
 //                                            }
 //                                        }
 //                                    }
+                            }
                         }
-                    }
-                });
+                    });
+        } else {
+
+            //error message displaying that you are not logged in thus you cannot upload to the database
+        }
+
+
     }
 }
+
+

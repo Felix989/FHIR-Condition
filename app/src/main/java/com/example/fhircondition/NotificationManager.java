@@ -20,11 +20,20 @@ public class NotificationManager {
     }
 
     public static void dataTemporalSave(Context cont) {
-        Toast.makeText(cont, "Data is saved temporarly!", Toast.LENGTH_LONG).show();
+        if(!MainActivity.skipped) {
+            Toast.makeText(cont, "Data is saved temporarly!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(cont, "Data isn't saved, because you are not logged in!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public static void dataPermanentSave(Context cont) {
-        Toast.makeText(cont, "Data has been pushed to the server!", Toast.LENGTH_LONG).show();
+        if(!MainActivity.skipped){
+            Toast.makeText(cont, "Data has been pushed to the server!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(cont, "Data isn't saved, because you are not logged in!", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public static void userRegistered(Context cont) {
@@ -37,6 +46,11 @@ public class NotificationManager {
 
     public static void deletePatient(Context cont, String name) {
         Toast.makeText(cont, "Patient '" + name + "' was deleted!", Toast.LENGTH_LONG).show();
+    }
+
+    //statikus metódusból nem lehet hívni, úgyhogy ezt majd később ki kell javítani...
+    public static void cantPushToDatabaseBecauseOfAuthentication(Context cont) {
+        Toast.makeText(cont, "Cannot push data to database, because you are not logged in!", Toast.LENGTH_LONG).show();
     }
 
 //    public static void bmiAlert(Context cont) {
