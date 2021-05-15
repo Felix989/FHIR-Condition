@@ -68,6 +68,7 @@ public class ListAllPatients extends AppCompatActivity {
                     NotificationManager.dataPermanentSave(ListAllPatients.this);
                     condi = new FHIRCondition();
                     condi.printEveryProperty();
+                    anamnesisActivity.person.isDeleted = true;
                     anamnesisActivity.pushToServer();
                 }
                 hasBeenPressed = true;
@@ -81,6 +82,7 @@ public class ListAllPatients extends AppCompatActivity {
                     NotificationManager.dataPermanentSave(ListAllPatients.this);
                     condi = new FHIRCondition();
                     condi.printEveryProperty();
+                    anamnesisActivity.person.isDeleted = true;
                     anamnesisActivity.pushToServer();
                 }
                 hasBeenPressed = false;
