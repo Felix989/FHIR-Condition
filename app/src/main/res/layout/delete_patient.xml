@@ -10,11 +10,12 @@
         android:id="@+id/imageView4"
         android:layout_width="154dp"
         android:layout_height="204dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/showPersonInfoTextbox"
         app:srcCompat="@drawable/healthcare" />
 
     <Button
@@ -51,28 +52,15 @@
         android:id="@+id/logOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
         android:text="Log Out"
         android:textColor="#403f3f"
         app:backgroundTint="#E38471"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deletePatientButton"
-        app:layout_constraintVertical_bias="0.652" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="343dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="152dp"
-        android:text="@string/delete_patient_by_name"
-        android:textColor="#D3D3D3"
-        android:textColorHint="#D3D3D3"
-        android:textSize="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.413" />
 
     <EditText
         android:id="@+id/deletePatientByNameField"
@@ -81,11 +69,38 @@
         android:layout_marginTop="24dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/name"
+        android:hint="ID"
         android:inputType="textPersonName"
         android:textColor="#D3D3D3"
         android:textColorHint="#D3D3D3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <Button
+        android:id="@+id/getPatientByIdentificator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get Patient"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
+        app:backgroundTint="#427A5B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/logOutButton"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backPatientButton"
+        app:layout_constraintVertical_bias="0.413" />
+
+    <TextView
+        android:id="@+id/showPersonInfoTextbox"
+        android:layout_width="301dp"
+        android:layout_height="217dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#D3D3D3"
+        android:textColorHint="#D3D3D3"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

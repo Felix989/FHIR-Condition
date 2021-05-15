@@ -28,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -119,7 +121,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 try {
                     String name = nameField.getText().toString();
                     person.setName(name);
-                    if(name.equals("") || name.equals(null)){
+                    if (name.equals("") || name.equals(null)) {
                         canGoThrough = false;
                     } else {
                         canGoThrough = true;
@@ -131,7 +133,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 }
 
                 try {
-                    if(canGoThrough == false){
+                    if (canGoThrough == false) {
                     } else {
                         canGoThrough = true;
                     }
@@ -144,7 +146,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 }
 
                 try {
-                    if(canGoThrough == false){
+                    if (canGoThrough == false) {
                     } else {
                         canGoThrough = true;
                     }
@@ -158,7 +160,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
 
 
                 try {
-                    if(canGoThrough == false){
+                    if (canGoThrough == false) {
                     } else {
                         canGoThrough = true;
                     }
@@ -237,24 +239,24 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
 
     public void startNewIntent() {
         Intent startIntent = new Intent(getApplicationContext(), registerDiagnosisActivity.class);
-        if(canGoThrough){
+        if (canGoThrough) {
             startActivity(startIntent);
         }
     }
 
-    public void deletePatientPageLoader(){
+    public void deletePatientPageLoader() {
         Intent startIntent = new Intent(getApplicationContext(), deletePatient.class);
         startActivity(startIntent);
     }
 
 
-    public static void pushToServer() {
+    public static void pushToServer(FHIRCondition condi) {
         FirebaseUser us;
         us = FirebaseAuth.getInstance().getCurrentUser();
-        if(MainActivity.skipped == false){
+        if (MainActivity.skipped == false) {
             int r = new Random().nextInt(99999999); // [0...99999999]
             person_identification_number = String.valueOf(r);
-            fireStore.collection("FHIRCondition").document(String.valueOf(r)).set(ListAllPatients.condi)
+            fireStore.collection("FHIRCondition").document(String.valueOf(r)).set(condi)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -287,9 +289,57 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
 
             //error message displaying that you are not logged in thus you cannot upload to the database
         }
-
-
     }
+
+
+    public static String res = "";
+    public static String getPatient(String id) {
+        FirebaseFirestore db;
+        res = "";
+        db = fireStore.getInstance();
+        DocumentReference patient = db.collection("FHIRCondition").document(id);
+        patient.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    StringBuilder data = new StringBuilder("");
+                    data.append("Name: ").append(doc.getString("name"));
+                    data.append("age: ").append(doc.getString("age"));
+
+                    System.out.println("DOC : " + doc.toString());
+                    System.out.println("DATA : " + data.toString());
+                    res = data.toString();
+                } else {
+                    System.out.println("Failed to get info!");
+                    res = "Failed to get info!";
+                }
+            }
+        });
+        return res;
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

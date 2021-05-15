@@ -215,7 +215,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="@string/erase"
+        android:text="Other"
         android:textColor="#D3D3D3"
         app:backgroundTint="#E38471"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -69,7 +69,7 @@ public class ListAllPatients extends AppCompatActivity {
                     condi = new FHIRCondition();
                     condi.printEveryProperty();
                     anamnesisActivity.person.isDeleted = true;
-                    anamnesisActivity.pushToServer();
+                    anamnesisActivity.pushToServer(condi);
                 }
                 hasBeenPressed = true;
             }
@@ -83,7 +83,7 @@ public class ListAllPatients extends AppCompatActivity {
                     condi = new FHIRCondition();
                     condi.printEveryProperty();
                     anamnesisActivity.person.isDeleted = true;
-                    anamnesisActivity.pushToServer();
+                    anamnesisActivity.pushToServer(condi);
                 }
                 hasBeenPressed = false;
                 final Handler handler = new Handler();//declaring a handler
