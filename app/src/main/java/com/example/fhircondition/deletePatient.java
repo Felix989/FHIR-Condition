@@ -14,14 +14,15 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class deletePatient extends AppCompatActivity {
+    public static TextView deletePatientByNameField;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delete_patient);
 
 
-
-        TextView deletePatientByNameField = (TextView) findViewById(R.id.deletePatientByNameField);
+        deletePatientByNameField = (TextView) findViewById(R.id.deletePatientByNameField);
         TextView showPersonInfoTextbox = (TextView) findViewById(R.id.showPersonInfoTextbox);
         Button deletePatientButton = (Button) findViewById(R.id.deletePatientButton);
         Button backPatientButton = (Button) findViewById(R.id.backPatientButton);
@@ -50,7 +51,9 @@ public class deletePatient extends AppCompatActivity {
                 String name = deletePatientByNameField.getText().toString();
                 String res = "";
                 res = anamnesisActivity.getPatient(name);
-                showPersonInfoTextbox.setText(res);
+//              showPersonInfoTextbox.setText("For the result check the console!");
+                //System.out.println("TESTPRINT : " + anamnesisActivity.returnedname);
+                //showPersonInfoTextbox.setText(anamnesisActivity.returnedname);
             }
         });
 
@@ -65,17 +68,20 @@ public class deletePatient extends AppCompatActivity {
     }
 
 
-    public void deleteByName(String name){
+    public void deleteByName(String name) {
         DatabaseReference dbrf = FirebaseDatabase.getInstance().getReference("FHIRCondition").child(name);
 
-//        FirebaseFirestore db;
-//        FirebaseFirestore fireStore;
-//        fireStore = FirebaseFirestore.getInstance();
-//        db = fireStore.getInstance();
-//        DocumentReference patient = db.collection("FHIRCondition").document(name);
+        FirebaseFirestore db;
+        FirebaseFirestore fireStore;
+        fireStore = FirebaseFirestore.getInstance();
+        db = fireStore.getInstance();
+        DocumentReference patient = db.collection("FHIRCondition").document(name);
+        db.collection("FHIRCondition").document(name).delete();//latest implementation of deleting
+        db.collection("PersonDTO").document(name).delete();//latest implementation of deleting
 
 
         dbrf.removeValue();
         NotificationManager.deletePatient(deletePatient.this, name);
+
     }
 }

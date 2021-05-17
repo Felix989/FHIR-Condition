@@ -117,6 +117,16 @@ public class PersonDTO {//patient | subject
     @Nullable
     String bloodType;
 
+    int personID;
+
+    public int getPersonID() {
+        return personID;
+    }
+
+    public void setPersonID(int personID) {
+        this.personID = personID;
+    }
+
     public PersonDTO(){
         age = 0;
         name = "";
@@ -127,5 +137,6 @@ public class PersonDTO {//patient | subject
         hasMedicine = false;
         bloodType = "";
         isDeleted = true;
+        personID = 0;
     }
 }

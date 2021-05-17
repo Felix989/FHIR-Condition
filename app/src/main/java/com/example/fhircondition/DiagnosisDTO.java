@@ -22,7 +22,16 @@ public class DiagnosisDTO {
     boolean isInfectious;
     boolean hasCovid;
     String CovidTestType;
-    //RECORDER -> AZ ORVOS ID-je, ha be van jelentkezve, firebaseból.//asserter
+    int PersonID;
+
+    public int getPersonID() {
+        return PersonID;
+    }
+
+    public void setPersonID(int personID) {
+        PersonID = personID;
+    }
+//RECORDER -> AZ ORVOS ID-je, ha be van jelentkezve, firebaseból.//asserter
     
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -59,6 +68,7 @@ public class DiagnosisDTO {
         this.isInfectious = isInfectious;
         this.hasCovid = hasCovid;
         CovidTestType = covidTestType;
+        this.PersonID = anamnesisActivity.person.personID;
     }
 
     public String getConditionName() {

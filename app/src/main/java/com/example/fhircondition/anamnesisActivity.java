@@ -32,6 +32,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -44,6 +47,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
     private CollectionReference collection;
     public static PersonDTO person = new PersonDTO();
     public static String person_identification_number = "";
+    public static String returnedname = "";
 
     private boolean canGoThrough = true;
 
@@ -197,6 +201,12 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                 person.conditions = condi;
                 person.diagnosis = diag;
                 person.isDeleted = false;
+
+
+                int r = new Random().nextInt(99999999); // [0...99999999]
+                person_identification_number = String.valueOf(r);
+                person.personID = r;
+
                 startNewIntent();
             }
         });
@@ -254,9 +264,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
         FirebaseUser us;
         us = FirebaseAuth.getInstance().getCurrentUser();
         if (MainActivity.skipped == false) {
-            int r = new Random().nextInt(99999999); // [0...99999999]
-            person_identification_number = String.valueOf(r);
-            fireStore.collection("FHIRCondition").document(String.valueOf(r)).set(condi)
+            fireStore.collection("FHIRCondition").document(String.valueOf(person_identification_number)).set(condi)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -286,7 +294,41 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                         }
                     });
         } else {
+            //error message displaying that you are not logged in thus you cannot upload to the database
+        }
 
+
+        if (MainActivity.skipped == false) {
+            fireStore.collection("PersonDTO").document(String.valueOf(person_identification_number)).set(person)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                //Toast.makeText(anamnesisActivity.this, "Data has been pushed to the database!", Toast.LENGTH_LONG).show();
+                                System.out.println("Person has been pushed to the database!");
+//                                    rules_version = '2';
+//                                    service cloud.firestore {
+//                                        match /databases/{database}/documents {
+//                                            match /{multiSegment=**} {
+//                                                allow read, write;
+//                                            }
+//                                        }
+//                                    }
+                            } else {
+                                System.out.println("Person couldn't be pushed to the database!");
+                                //Toast.makeText(anamnesisActivity.this, "Data couldn't be pushed to the database!", Toast.LENGTH_LONG).show();
+//                                    rules_version = '2';
+//                                    service cloud.firestore {
+//                                        match /databases/{database}/documents {
+//                                            match /{document=**} {
+//                                                allow read, write: if false;
+//                                            }
+//                                        }
+//                                    }
+                            }
+                        }
+                    });
+        } else {
             //error message displaying that you are not logged in thus you cannot upload to the database
         }
     }
@@ -297,7 +339,7 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
         FirebaseFirestore db;
         res = "";
         db = fireStore.getInstance();
-        DocumentReference patient = db.collection("FHIRCondition").document(id);
+        DocumentReference patient = db.collection("PersonDTO").document(id);
         patient.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -305,11 +347,21 @@ public class anamnesisActivity extends AppCompatActivity implements AdapterView.
                     DocumentSnapshot doc = task.getResult();
                     StringBuilder data = new StringBuilder("");
                     data.append("Name: ").append(doc.getString("name"));
-                    data.append("age: ").append(doc.getString("age"));
+                    String name = doc.getString("name");
+                    anamnesisActivity.returnedname = name;
+                    deletePatient.deletePatientByNameField.setText(name);
+                    System.out.println("Name: " + name);
 
-                    System.out.println("DOC : " + doc.toString());
-                    System.out.println("DATA : " + data.toString());
-                    res = data.toString();
+//                    try {
+//                        JSONObject json = new JSONObject(data.toString());
+//                        System.out.println(json.get("subject"));
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+
+                    //System.out.println("DOC : " + doc.toString());
+                    //System.out.println("DATA : " + data.toString());
+                    res = name;
                 } else {
                     System.out.println("Failed to get info!");
                     res = "Failed to get info!";

@@ -2,20 +2,20 @@ package com.example.fhircondition;
 
 public class FHIRCondition {
 
-    boolean verificationStatus;
+    String verificationStatus;
     String category;
     String severity;
     int code;
     String bodySite;
     PersonDTO subject;
-    boolean encounter;
+    String encounter;
     String onsetDateTime;
 
-    public boolean isVerificationStatus() {
+    public String getVerificationStatus() {
         return verificationStatus;
     }
 
-    public void setVerificationStatus(boolean verificationStatus) {
+    public void setVerificationStatus(String verificationStatus) {
         this.verificationStatus = verificationStatus;
     }
 
@@ -57,14 +57,6 @@ public class FHIRCondition {
 
     public void setSubject(PersonDTO subject) {
         this.subject = subject;
-    }
-
-    public boolean isEncounter() {
-        return encounter;
-    }
-
-    public void setEncounter(boolean encounter) {
-        this.encounter = encounter;
     }
 
     public String getOnsetDateTime() {
@@ -147,6 +139,7 @@ public class FHIRCondition {
     String evidence;
     String detail;
     String note;
+    Integer identifier;
 
     public void printEveryProperty(){
         System.out.println(assessment);
@@ -168,14 +161,38 @@ public class FHIRCondition {
         System.out.println(type);
     }
 
+    public String getEncounter() {
+        return encounter;
+    }
+
+    public void setEncounter(String encounter) {
+        this.encounter = encounter;
+    }
+
+    public Integer getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(Integer identifier) {
+        this.identifier = identifier;
+    }
+
     public FHIRCondition() {
-        this.verificationStatus = registerDiagnosisActivity.condition.verificationStatus;
+        if(registerDiagnosisActivity.condition.verificationStatus){
+            this.verificationStatus = "I have examined";
+        } else {
+            this.verificationStatus = "Patient's told";
+        }
         this.category = registerDiagnosisActivity.condition.category;
         this.severity = registerDiagnosisActivity.condition.severity;
-        this.code = 123;
+        this.code = Integer.valueOf(anamnesisActivity.person_identification_number);
         this.bodySite = registerDiagnosisActivity.condition.bodySite;
         this.subject = anamnesisActivity.person;
-        this.encounter = registerDiagnosisActivity.condition.encounter;
+        if(registerDiagnosisActivity.condition.encounter){
+            this.encounter = "Has encountered yet";
+        } else {
+            this.encounter = "Has not encountered yet";
+        }
         this.onsetDateTime = registerIllnessActivity.diag.getDiagnosisTime();
         this.recorder = 123;
         if(registerDiagnosisActivity.condition.clinicalStatus){
@@ -189,5 +206,6 @@ public class FHIRCondition {
         this.evidence = "evidence";
         this.detail = "detail";
         this.note = registerDiagnosisActivity.condition.medicalNotes;
+        this.identifier = Integer.valueOf(anamnesisActivity.person_identification_number);
     }
 }
